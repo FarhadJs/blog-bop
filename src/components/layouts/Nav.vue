@@ -1,7 +1,7 @@
 <template>
   <nav id="welcome">
     <h1>Welcome to the BlogBop!</h1>
-    <p>a Weblog page for you and your experience for others...</p>
+    <p>Write your blog in Blog Bop!</p>
   </nav>
 </template>
 
@@ -19,10 +19,7 @@ export default {};
   border-bottom: 1px solid white;
   margin-bottom: 20px;
 }
-h1 {
-  margin: 0px;
-}
 p {
-  margin: 0px;
+  margin-top: 10px;
 }
 </style>

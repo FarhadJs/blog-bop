@@ -60,7 +60,7 @@ span {
   width: 700px;
   display: flex;
   flex-direction: column;
-  border: 1px solid white;
+  @apply border border-neutral-400;
 }
 #post-body {
   background-color: #242424;

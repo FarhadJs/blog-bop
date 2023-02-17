@@ -1,9 +1,14 @@
 <template>
+  <PageNumber />
   <footer>This site made whith ♥ and this site has Open Sourse Lisence.</footer>
 </template>
 
 <script>
-export default {};
+import PageNumber from "../PageNumber.vue";
+
+export default {
+  components: { PageNumber },
+};
 </script>
 
 <style scoped>

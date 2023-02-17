@@ -44,9 +44,11 @@ h2 {
   font-size: 2em;
   line-height: 1.1;
   margin-left: 10%;
+  user-select: none;
 }
 
 .logo {
+  @apply transition-all ;
   will-change: filter;
   transition: filter 300ms;
   cursor: pointer;
