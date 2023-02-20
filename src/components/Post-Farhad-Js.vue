@@ -1,17 +1,18 @@
 <template>
-  <div id="post-tab" :style="style" class="mx-5">
+  <div :class="Inclass" :style="style" id="post-tab">
     <a href="#!"
       ><img
         src="./../assets/wallpaper/20221228.jpg"
         alt="..."
         :style="imgStyle"
+        class="w-full"
     /></a>
-    <div id="post-body" class="">
+    <div id="post-body">
       <hr />
       <div id="post">
         <span id="post-date">January 1, 2022</span>
-        <h2 class="font-bold">Post Title</h2>
-        <p>
+        <h2>Post Title</h2>
+        <p class="border border-neutral-600">
           {{ post.body }}
         </p>
         <a href="#!">Read more -></a>
@@ -27,7 +28,10 @@ export default {
     style: { type: Object },
     imgStyle: { type: String },
     post: { type: Object },
-    Inclass: { type: String },
+    Inclass: { type: Array },
+  },
+  created() {
+    console.log(this.Inclass);
   },
 };
 </script>
@@ -46,19 +50,7 @@ hr {
 p {
   font-size: small;
   overflow-y: auto;
-  @apply h-10 font-light overflow-ellipsis;
-}
-p::-webkit-scrollbar {
-  width: 10px;
-  border: 2px solid rgb(117, 117, 117);
-  margin-left: 10px;
-  @apply rounded-xl;
-}
-p::-webkit-scrollbar-thumb{
-  @apply bg-neutral-400 rounded-xl;
-}
-p::-webkit-scrollbar-track{
-  @apply border;
+  height: 40px;
 }
 span {
   font-size: x-small;
@@ -72,12 +64,12 @@ span {
 #post-tab {
   display: flex;
   flex-direction: column;
-  @apply border border-neutral-600;
+  justify-content: flex-start;
+  @apply w-96;
 }
 #post-body {
   background-color: #242424;
   text-align: left;
-  height: 100%;
   margin-top: -5px;
 }
 </style>
