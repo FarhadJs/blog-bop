@@ -1,28 +1,36 @@
 <template>
-  <Header />
-  <Nav />
-  <Sidebar />
-  <PostList />
-  <Footer />
+  <TheHeader :page="currentPage" @changePage="currentPage = $event" />
+
+  <keep-alive>
+    <component :is="currentPage"></component>
+  </keep-alive>
+
+  <TheFooter></TheFooter>
 </template>
 
 <script>
+import { defineAsyncComponent } from "vue";
 // import HelloWorld from './components/HelloWorld.vue'
-import Footer from "./components/layouts/Footer.vue";
-import Header from "./components/layouts/Header.vue";
-import Nav from "./components/layouts/Nav.vue";
-import Sidebar from "./components/layouts/Sidebar.vue";
-// import Post from "./components/Post.vue";
-import PostList from "./components/PostList.vue";
+import TheFooter from "./components/layouts/TheFooter.vue";
+import TheHeader from "./components/layouts/TheHeader.vue";
+import Home from "./components/pages/Home.vue";
+import Contact from "./components/pages/Contact.vue";
+import About from "./components/pages/About.vue";
 
 export default {
   components: {
-    Header,
-    Footer,
-    Nav,
-    Sidebar,
-    PostList,
-    // Post,
+    TheHeader,
+    TheFooter,
+    Home: defineAsyncComponent(() => import("./components/pages/Home.vue")),
+    Contact: defineAsyncComponent(() =>
+      import("./components/pages/Contact.vue")
+    ),
+    About: defineAsyncComponent(() => import("./components/pages/About.vue")),
+  },
+  data() {
+    return {
+      currentPage: "home",
+    };
   },
 };
 </script>
@@ -36,3 +44,7 @@ export default {
   <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
 </a> -->
 <!-- <HelloWorld msg="Vite + Vue" /> -->
+
+<!-- <Home v-if="currentPage === 'home'"></Home>
+  <About v-else-if="currentPage === 'about'"></About>
+  <Contact v-else-if="currentPage === 'contact'"></Contact> -->

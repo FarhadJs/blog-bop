@@ -57,6 +57,7 @@ label {
   width: 30%;
   position: absolute;
   right: 5%;
+  top: 28.2%;
 }
 
 #search {

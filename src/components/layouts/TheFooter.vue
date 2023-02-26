@@ -1,10 +1,12 @@
 <template>
+  <br />
+  <br />
   <footer>This site made whith ♥ and this site has Open Sourse Lisence.</footer>
 </template>
 
 <script>
 export default {
-  name: "Footer",
+  name: "TheFooter",
 };
 </script>
 

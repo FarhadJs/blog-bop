@@ -2,10 +2,26 @@
   <header>
     <h2 class="logo">Blog Bop</h2>
     <div>
-      <a>Home</a>
-      <a>About</a>
-      <a>Contact</a>
-      <a>Blog</a>
+      <a
+        :class="{ 'text-gray-300': page === 'home' }"
+        @click="$emit('changePage', 'home')"
+        >Home</a
+      >
+      <a
+        :class="{ 'text-gray-300': page === 'about' }"
+        @click="$emit('changePage', 'about')"
+        >About</a
+      >
+      <a
+        :class="{ 'text-gray-300': page === 'contact' }"
+        @click="$emit('changePage', 'contact')"
+        >Contact</a
+      >
+      <a
+        :class="{ 'text-gray-300': page === 'blog' }"
+        @click="$emit('changePage', 'blog')"
+        >Blog</a
+      >
     </div>
   </header>
   <br />
@@ -13,7 +29,9 @@
 </template>
 
 <script>
-export default {};
+export default {
+  props: ["page"],
+};
 </script>
 
 <style scoped>
@@ -48,7 +66,7 @@ h2 {
 }
 
 .logo {
-  @apply transition-all ;
+  @apply transition-all;
   will-change: filter;
   transition: filter 300ms;
   cursor: pointer;

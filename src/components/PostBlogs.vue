@@ -27,10 +27,14 @@ export default {
     style: { type: Object },
     imgStyle: { type: String },
     post: { type: Object },
-    Inclass: { type: String },
+    Inclass: { type: Array },
   },
 };
 </script>
+
+<style lang="scss" scoped>
+
+</style>
 
 <style scoped>
 h2 {

@@ -1,35 +1,45 @@
 <template>
-  <div v-if="!loading">
-    <Post :post="posts[0]" :Inclass="['border']" />
+  <!-- <AlertMessage>
+    <div
+      class="bg-blue-200 w-96 mx-auto ml-16 text-blue-800 mb-3 p-2 rounded-md cursor-pointer select-none"
+    >
+      <p>this is a information message</p>
+    </div>
+  </AlertMessage> -->
+
+  <div v-if="!loading" id="PPage">
+    <PostBlogs :post="posts[0]" :Inclass="['border']" />
     <div id="small" v-for="(postGroup, index) in posts.slice(1)" :key="index">
-      <Post
+      <PostBlogs
         v-for="post in postGroup"
         :key="post.id"
         :post="post"
-        style="width: 300px;margin-top: 20px;"
+        style="width: 375px; margin-top: 20px"
       />
     </div>
   </div>
   <div v-else>Loading...</div>
 
   <PageNumber
+    v-if="!loading"
     :totalPage="page.total"
     :currentPage="page.current"
     @Page-changed="changePage"
-    :pre-page="5"
   />
 </template>
 
 <script>
-import Post from "./Post.vue";
+import PostBlogs from "./PostBlogs.vue";
 import axios from "axios";
 import _ from "underscore";
 import PageNumber from "./PageNumber.vue";
+import AlertMessage from "./AlertMessage.vue";
 
 export default {
   components: {
-    Post,
+    PostBlogs,
     PageNumber,
+    AlertMessage,
   },
 
   data() {
@@ -58,15 +68,12 @@ export default {
           console.log(res.headers);
           this.posts = res.data;
           let mainPost = this.posts.shift();
-          // console.log(_.chunk(this.posts, 2));
 
           this.posts = [mainPost, ..._.chunk(this.posts, 2)];
           this.page.current = page;
           this.page.total = parseInt(
             parseInt(res.headers["x-total-count"]) / 9
           );
-          console.log(this.page);
-          console.log(this.posts);
           this.loading = false;
         })
         .catch((err) => console.log(err));
@@ -76,19 +83,20 @@ export default {
 </script>
 
 <style scoped>
-div {
+#PPage {
   width: 70%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
   justify-content: center;
+  @apply mb-5 px-10;
 }
 
 #small {
-  width: 70%;
   display: grid;
   grid-template-columns: auto auto;
   justify-content: space-around;
+  @apply w-full;
 }
 </style>
