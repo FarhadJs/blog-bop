@@ -65,7 +65,7 @@ export default {
       axios
         .get(`http://jsonplaceholder.typicode.com/posts?_page=${page}&_limit=9`)
         .then((res) => {
-          console.log(res.headers);
+          // console.log(res.headers);
           this.posts = res.data;
           let mainPost = this.posts.shift();
 

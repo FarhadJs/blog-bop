@@ -1,13 +1,17 @@
 <template>
   <header>
     <h2 class="logo">Blog Bop</h2>
-    <div>
-      <a
+    <div class="w-1/4">
+      <!-- <a
         :class="{ 'text-gray-300': page === 'home' }"
         @click="$emit('changePage', 'home')"
         >Home</a
-      >
-      <a
+      > -->
+      <router-link to="/">Home</router-link>
+      <router-link to="/contact">Contact</router-link>
+      <router-link to="/about">About us</router-link>
+      <router-link to="/dashboard">Dashboard</router-link>
+      <!-- <a
         :class="{ 'text-gray-300': page === 'about' }"
         @click="$emit('changePage', 'about')"
         >About</a
@@ -21,7 +25,7 @@
         :class="{ 'text-gray-300': page === 'blog' }"
         @click="$emit('changePage', 'blog')"
         >Blog</a
-      >
+      > -->
     </div>
   </header>
   <br />
@@ -54,7 +58,6 @@ header {
 }
 div {
   margin-right: 5%;
-  width: 230px;
   display: flex;
   justify-content: space-around;
 }
@@ -73,5 +76,9 @@ h2 {
 }
 .logo:hover {
   filter: drop-shadow(0 0 5px #a5a5a5);
+}
+
+.router-link-active {
+  @apply text-[#e4e4e4] !important;
 }
 </style>

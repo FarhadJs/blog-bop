@@ -1,31 +1,18 @@
 <template>
-  <TheHeader :page="currentPage" @changePage="currentPage = $event" />
-
-  <keep-alive>
-    <component :is="currentPage"></component>
-  </keep-alive>
-
+  <TheHeader />
+  <RouterView></RouterView>
   <TheFooter></TheFooter>
 </template>
 
 <script>
-import { defineAsyncComponent } from "vue";
 // import HelloWorld from './components/HelloWorld.vue'
 import TheFooter from "./components/layouts/TheFooter.vue";
 import TheHeader from "./components/layouts/TheHeader.vue";
-import Home from "./components/pages/Home.vue";
-import Contact from "./components/pages/Contact.vue";
-import About from "./components/pages/About.vue";
 
 export default {
   components: {
     TheHeader,
     TheFooter,
-    Home: defineAsyncComponent(() => import("./components/pages/Home.vue")),
-    Contact: defineAsyncComponent(() =>
-      import("./components/pages/Contact.vue")
-    ),
-    About: defineAsyncComponent(() => import("./components/pages/About.vue")),
   },
   data() {
     return {

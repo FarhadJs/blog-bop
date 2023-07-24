@@ -1,6 +1,4 @@
 <template>
-  <br />
-  <br />
   <footer>This site made whith ♥ and this site has Open Sourse Lisence.</footer>
 </template>
 
